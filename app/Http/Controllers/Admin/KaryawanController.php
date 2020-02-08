@@ -16,7 +16,7 @@ class KaryawanController extends Controller
     public function index()
     {
         $karyawan = Karyawan::all();
-        return view('admin/karyawan/index', compact('karyawan'));
+        return view('admin/karyawan/index', ['karyawan' => $karyawan]);
     }
 
     /**
