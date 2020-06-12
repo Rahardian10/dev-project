@@ -16,7 +16,9 @@
   
   <h1 class="h3 mb-2 text-gray-800">Data Barang</h1>
   <a href="/" class="btn btn-danger mb-2">Kembali</a>
+  @if(count($pinjam) == 0)
   <a href="{{url('/tampil/table')}}" class="btn btn-primary mb-2">Pengajuan</a>
+  @endif
   {{-- <a href="{{url('/invetaris/keranjang')}}" class="btn btn-warning mb-2"><i class="fa fa-shopping-cart"> Keranjang</i></a> --}}
   <!-- DataTales Example -->
   <div class="card shadow mb-4">
@@ -33,7 +35,7 @@
               <th>Nama Kategori</th>
               <th>Jumlah Pinjam</th>
               <th>Tanggal Pinjam</th>
-              <th>Kembali</th>
+              {{-- <th>Kembali</th> --}}
               <th>Status</th>  
               <th>Action</th>
             </tr>
@@ -48,7 +50,7 @@
            <td>{{$box->Kategori->nama_kategori}}</td>
            <td>{{$box->jumlah_pinjam}}</td>
            <td>{{$box->tgl_pinjam}}</td>
-           <td>{{$box->Kembali['tgl_kembali']}}</td>
+           {{-- <td>{{$box->Kembali['tgl_kembali']}}</td> --}}
            <td>
             @if( $box->status == "Pending" )
                 <span class="badge badge-warning btn-sm">Pending</span>
@@ -69,7 +71,9 @@
              {{-- <i href="{{ url('/user/barang/exportpdf') }}/{{$box->id_pinjam}}" class="btn btn-danger float-right mr-2" onclick="return confirm('Cetak PDF?');" target="_blank"><i class="fas fa-print"></i></i> --}}
              @else
              <a href="{{ url('/user/barang/exportpdf') }}/{{$box->id_pinjam}}" class="btn btn-danger float-right mr-2" onclick="return confirm('Cetak PDF?');" target="_blank"><i class="fas fa-print"></i></a>
+             @if(count($kembali) == 0)
              <a href="" class="btn btn-secondary btn-sm" data-target="#kembali_{{$box->id_barang}}" data-toggle="modal">Kembali</a>
+             @endif
       </div>
     </div>
   </div>

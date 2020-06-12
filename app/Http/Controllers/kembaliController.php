@@ -54,8 +54,9 @@ class kembaliController extends Controller
             'status_kembali' => 'Belum',
             'keterangan' => $request->keterangan
         ]);
+
         // return $back;
-        Pinjam::where('id_kembali', $back->Kembali['id_kembali'])->Update(['id_kembali' => $back->Kembali['id_kembali']]);
+        // Pinjam::where('id_kembali', $back->Kembali['id_kembali'])->Update(['id_kembali' => $back->Kembali['id_kembali']]);
         return redirect('/invetaris')->with('status', 'Data Berhasil Di Tambah!!!');
     }
 

@@ -23,10 +23,17 @@ class barangController extends Controller
     {
         $barang = Barang::all();
         $kategori = Kategori::all();
-        $kembali = Kembali::all();
-        // return $kembali;
-        $pinjam = Pinjam::where('id', auth()->user()->id)->get();
-        // echo "<pre>"; print_r($pinjam); exit;
+        $kembali = Kembali::where([
+            ['id', '=', auth()->user()->id],
+            ['tgl_kembali', '=', date('Y-m-d')]
+        ])->get();
+        // $kembali = Kembali::all();
+        $pinjam = Pinjam::where([
+            ['id', '=', auth()->user()->id],
+            ['tgl_pinjam', '=', date('Y-m-d')]
+        ])->get();
+        // $pinjam = Pinjam::where('id', auth()->user()->id)->get();
+        // return count($kembali);
         return view('Invetaris.barang', ['kategori' => $kategori, 'pinjam' => $pinjam, 'barang' => $barang, 'kembali' => $kembali]);
     }
 
